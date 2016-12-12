@@ -22,21 +22,21 @@ class Cart {
         return cartTotal
     }
     
-    func addItem(item: Item) {
+    func addItem(_ item: Item) {
         self.items.append(item)
     }
     
-    func removeItem(unwantedItem: Item) {
+    func removeItem(_ unwantedItem: Item) {
         
-        for (index, item) in self.items.enumerate() {
+        for (index, item) in self.items.enumerated() {
             if item == unwantedItem {
-                self.items.removeAtIndex(index)
+                self.items.remove(at: index)
             }
         }
         
     }
     
-    func itemsWithName(name: String) -> [Item] {
+    func items(withName name: String) -> [Item] {
         
         var matchingNamesArray: [Item] = []
         
@@ -48,24 +48,24 @@ class Cart {
         return matchingNamesArray
     }
     
-    func itemsWithMinimumPriceInCents(centsLesser: Int) -> [Item] {
+    func items(withMinPrice price: Int) -> [Item] {
         
         var sortingByCentsArray: [Item] = []
         
         for item in self.items {
-            if item.priceInCents >= centsLesser {
+            if item.priceInCents >= price {
                 sortingByCentsArray.append(item)
             }
         }
         return sortingByCentsArray
     }
     
-    func itemsWithMaximumPriceInCents(centsGreater: Int) -> [Item] {
+    func items(withMaxPrice price: Int) -> [Item] {
         
         var sortingByCentsArray: [Item] = []
         
         for item in self.items {
-            if item.priceInCents <= centsGreater {
+            if item.priceInCents <= price {
                 sortingByCentsArray.append(item)
             }
         }
